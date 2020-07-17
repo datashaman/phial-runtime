@@ -4,6 +4,11 @@ name: build php versions
 on:
   - push
 
+x-build-details: &build-details
+  username: ${{ secrets.DOCKER_USERNAME }}
+  password: ${{ secrets.DOCKER_PASSWORD }}
+  repository: datashaman/phial-runtime
+
 jobs:
   build-php72:
     name: php7.2 build image
@@ -14,11 +19,10 @@ jobs:
       - name: Build and push docker image
         uses: docker/build-push-action@v1
         with:
+          <<: *build-details
           build_args: PHP_PACKAGE=php72
-          password: ${{ secrets.DOCKER_PASSWORD }}
-          repository: datashaman/phial-runtime
           tags: build-php7.2
-          username: ${{ secrets.DOCKER_USERNAME }}
+
   build-php73:
     name: php7.3 build image
     runs-on: ubuntu-latest
@@ -33,6 +37,7 @@ jobs:
           repository: datashaman/phial-runtime
           tags: build-php7.3
           username: ${{ secrets.DOCKER_USERNAME }}
+
   build-php74:
     name: php7.4 build image
     runs-on: ubuntu-latest
@@ -47,6 +52,7 @@ jobs:
           repository: datashaman/phial-runtime
           tags: build-php7.4
           username: ${{ secrets.DOCKER_USERNAME }}
+
   build-php80:
     name: php8.0 build image
     runs-on: ubuntu-latest
