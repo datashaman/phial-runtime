@@ -5,7 +5,7 @@ on:
   - push
 
 jobs:
-  build-php72-base:
+  build-base:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -16,12 +16,11 @@ jobs:
           repository: datashaman/phial-runtime
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
-          build_args: PHP_PACKAGE=php72
-          tags: build-php72-base
+          tags: build-base
           target: base
 
   build-php72:
-    needs: build-php72-base
+    needs: build-base
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -29,15 +28,15 @@ jobs:
       - name: Build and push docker image
         uses: docker/build-push-action@v1
         with:
+          cache_froms: datashaman/phial-runtime:build-base
           repository: datashaman/phial-runtime
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
           build_args: PHP_PACKAGE=php72
-          cache_froms: datashaman/phial-runtime:build-php72-base
           tags: build-php72
 
   build-php73:
-    name: php7.3 build image
+    needs: build-base
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -45,13 +44,16 @@ jobs:
       - name: Build and push docker image
         uses: docker/build-push-action@v1
         with:
+          cache_froms: datashaman/phial-runtime:build-base
           repository: datashaman/phial-runtime
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
           build_args: PHP_PACKAGE=php73
+          tags: build-php72
           tags: build-php73
 
   build-php74:
+    needs: build-base
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -59,6 +61,7 @@ jobs:
       - name: Build and push docker image
         uses: docker/build-push-action@v1
         with:
+          cache_froms: datashaman/phial-runtime:build-base
           repository: datashaman/phial-runtime
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
@@ -66,6 +69,7 @@ jobs:
           tags: build-php74
 
   build-php80:
+    needs: build-base
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -73,6 +77,7 @@ jobs:
       - name: Build and push docker image
         uses: docker/build-push-action@v1
         with:
+          cache_froms: datashaman/phial-runtime:build-base
           repository: datashaman/phial-runtime
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
