@@ -7,7 +7,8 @@ on:
 jobs:
   php74:
     name: php74
-    runs-on: amazonlinux:2
+    container:
+      image: amazonlinux:2
     steps:
       - name: yum dependencies
         run: |
