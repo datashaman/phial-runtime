@@ -5,6 +5,34 @@ on:
   - push
 
 jobs:
+  build-php72:
+    name: php7.2 build image
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Build and push docker image
+        uses: docker/build-push-action@v1
+        with:
+          build_args: PHP_PACKAGE=php72
+          password: ${{ secrets.DOCKER_PASSWORD }}
+          repository: datashaman/phial-runtime
+          tags: build-php7.2
+          username: ${{ secrets.DOCKER_USERNAME }}
+  build-php73:
+    name: php7.3 build image
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Build and push docker image
+        uses: docker/build-push-action@v1
+        with:
+          build_args: PHP_PACKAGE=php73
+          password: ${{ secrets.DOCKER_PASSWORD }}
+          repository: datashaman/phial-runtime
+          tags: build-php7.3
+          username: ${{ secrets.DOCKER_USERNAME }}
   build-php74:
     name: php7.4 build image
     runs-on: ubuntu-latest
