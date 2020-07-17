@@ -14,7 +14,7 @@ jobs:
       - name: yum dependencies
         run: |
           yum update -y
-          amazon-linux-extras install -y epel \
+          amazon-linux-extras install -y epel
           yum install -y \
             http://rpms.famillecollet.com/enterprise/remi-release-7.rpm \
             yum-utils
