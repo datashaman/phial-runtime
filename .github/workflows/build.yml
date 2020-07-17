@@ -47,3 +47,17 @@ jobs:
           repository: datashaman/phial-runtime
           tags: build-php7.4
           username: ${{ secrets.DOCKER_USERNAME }}
+  build-php80:
+    name: php8.0 build image
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Build and push docker image
+        uses: docker/build-push-action@v1
+        with:
+          build_args: PHP_PACKAGE=php80
+          password: ${{ secrets.DOCKER_PASSWORD }}
+          repository: datashaman/phial-runtime
+          tags: build-php8.0
+          username: ${{ secrets.DOCKER_USERNAME }}
