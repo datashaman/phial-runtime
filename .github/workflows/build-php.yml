@@ -10,7 +10,7 @@ on:
       - build-php/**
 
 jobs:
-  build-php:
+  build:
     runs-on: ubuntu-latest
 
     strategy:
