@@ -28,7 +28,6 @@ RUN mkdir -p /opt/${PHP_PACKAGE}/etc \
 
 RUN mkdir /opt/${PHP_PACKAGE}/lib \
     && cp -a \
-        /usr/lib64/libc* \
         /usr/lib64/libedit.so* \
         /usr/lib64/libexslt.so* \
         /usr/lib64/libfontconfig.so* \
