@@ -20,3 +20,20 @@ RUN curl https://raw.githubusercontent.com/composer/getcomposer.org/master/web/i
     | php -- --quiet --install-dir=/usr/local/bin --filename=composer \
     && composer global require hirak/prestissimo \
     && composer clear-cache
+
+RUN mkdir /opt/lib \
+    && cp \
+        /usr/lib64/libc* \
+        /usr/lib64/libedit.so* \
+        /usr/lib64/libncurses.so* \
+        /usr/lib64/libpcre.so* \
+        /usr/lib64/libtinfo.so* \
+        /opt/lib
+
+ENV PHP_ROOT /opt/remi/${PHP_PACKAGE}/root
+
+RUN mkdir /opt/bin \
+    && cp ${PHP_ROOT}/bin/* /usr/local/bin/composer /opt/bin
+
+RUN mkdir /opt/lib/php \
+    && cp -a ${PHP_ROOT}/usr/lib64/php/modules /opt/lib/php
