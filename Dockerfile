@@ -10,18 +10,20 @@ RUN yum update -y \
     && yum clean all \
     && rm -rf /var/cache/yum
 
-RUN yum-config-manager --enable remi-php74
+ARG PHP_PACKAGE=php74
+
+RUN yum-config-manager --enable remi-${PHP_PACKAGE}
 
 RUN yum update -y \
     && yum install -y \
-        php74 \
-        php74-php-gd \
-        php74-php-mbstring \
-        php74-php-process \
-        php74-php-xml \
+        ${PHP_PACKAGE} \
+        ${PHP_PACKAGE}-php-gd \
+        ${PHP_PACKAGE}-php-mbstring \
+        ${PHP_PACKAGE}-php-process \
+        ${PHP_PACKAGE}-php-xml \
         python3-pip \
         unzip \
-    && ln -s /usr/bin/php74 /usr/bin/php \
+    && ln -s /usr/bin/${PHP_PACKAGE} /usr/bin/php \
     && yum clean all \
     && rm -rf /var/cache/yum
 
@@ -30,8 +32,3 @@ RUN pip3 install -U aws-lambda-builders==0.9.0 aws-sam-cli==0.53.0 awscli boto3 
 RUN curl https://raw.githubusercontent.com/composer/getcomposer.org/master/web/installer \
     | php -- --quiet --install-dir=/usr/local/bin --filename=composer \
     && composer global require hirak/prestissimo
- 
-# RUN adduser builder
-# USER builder
-# 
-# RUN bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
