@@ -2,9 +2,10 @@ FROM amazonlinux:2
 
 RUN rpm --import https://rpms.remirepo.net/RPM-GPG-KEY-remi
 
-RUN yum update -y \
-    && amazon-linux-extras install -y epel \
+RUN amazon-linux-extras install -y epel \
+    && yum update -y \
     && yum install -y \
+        deltarpm \
         http://rpms.famillecollet.com/enterprise/remi-release-7.rpm \
         yum-utils \
     && yum clean all \
