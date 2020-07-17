@@ -1,9 +1,11 @@
 ---
+name: build-php
+
 on:
   push:
     paths:
       - .github/workflows/php.yml
-      - php/**
+      - build-php/**
 
 jobs:
   build-php:
@@ -27,6 +29,6 @@ jobs:
           repository: datashaman/phial-runtime
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
-          path: php
-          build_args: PHP_PACKAGE=${{ matrix.php }}
+          path: build-php
           tags: build-${{ matrix.php }}
+          build_args: PHP_PACKAGE=${{ matrix.php }}
