@@ -13,10 +13,10 @@ jobs:
       - name: Build and push docker image
         uses: docker/build-push-action@v1
         with:
-          dockerfile: ./base/Dockerfile
           repository: datashaman/phial-runtime
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
+          path: base
           tags: build-base
           target: base
 
@@ -29,10 +29,10 @@ jobs:
       - name: Build and push docker image
         uses: docker/build-push-action@v1
         with:
-          dockerfile: ./php/Dockerfile
           repository: datashaman/phial-runtime
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
+          path: php
           build_args: PHP_PACKAGE=php72
           tags: build-php72
 
@@ -45,10 +45,10 @@ jobs:
       - name: Build and push docker image
         uses: docker/build-push-action@v1
         with:
-          dockerfile: ./php/Dockerfile
           repository: datashaman/phial-runtime
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
+          path: php
           build_args: PHP_PACKAGE=php73
           tags: build-php72
 
@@ -61,10 +61,10 @@ jobs:
       - name: Build and push docker image
         uses: docker/build-push-action@v1
         with:
-          dockerfile: ./php/Dockerfile
           repository: datashaman/phial-runtime
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
+          path: php
           build_args: PHP_PACKAGE=php74
           tags: build-php74
 
@@ -77,9 +77,9 @@ jobs:
       - name: Build and push docker image
         uses: docker/build-push-action@v1
         with:
-          dockerfile: ./php/Dockerfile
           repository: datashaman/phial-runtime
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
+          path: php
           build_args: PHP_PACKAGE=php80
           tags: build-php80
