@@ -1,0 +1,30 @@
+---
+name: build php versions
+
+on:
+  - push
+
+jobs:
+  php74:
+    name: php74
+    runs-on: amazonlinux:2
+    steps:
+      - name: |
+          yum update -y
+          amazon-linux-extras install -y epel \
+          yum install -y \
+            http://rpms.famillecollet.com/enterprise/remi-release-7.rpm \
+            yum-utils
+          yum-config-manager --enable remi-php74
+          yum update -y
+          yum install -y \
+            php74 \
+            php74-php-gd \
+            php74-php-mbstring \
+            php74-php-process \
+            php74-php-xml \
+            python3-pip \
+            unzip
+          ln -s /usr/bin/php74 /usr/bin/php
+          yum clean all
+          rm -rf /var/cache/yum
