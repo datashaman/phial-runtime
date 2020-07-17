@@ -17,7 +17,7 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
           build_args: PHP_PACKAGE=php72
-          tags: build-php7.2-base
+          tags: build-php72-base
           target: base
 
   build-php72:
@@ -33,7 +33,8 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
           build_args: PHP_PACKAGE=php72
-          tags: build-php7.2
+          cache_froms: datashaman/phial-runtime:build-php72-base
+          tags: build-php72
 
   build-php73:
     name: php7.3 build image
@@ -48,7 +49,7 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
           build_args: PHP_PACKAGE=php73
-          tags: build-php7.3
+          tags: build-php73
 
   build-php74:
     runs-on: ubuntu-latest
@@ -62,7 +63,7 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
           build_args: PHP_PACKAGE=php74
-          tags: build-php7.4
+          tags: build-php74
 
   build-php80:
     runs-on: ubuntu-latest
@@ -76,4 +77,4 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
           build_args: PHP_PACKAGE=php80
-          tags: build-php8.0
+          tags: build-php80
