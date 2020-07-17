@@ -10,7 +10,7 @@ RUN yum update -y \
     && yum clean all \
     && rm -rf /var/cache/yum
 
-ARG PHP_PACKAGE=php74
+ARG PHP_PACKAGE
 
 RUN yum-config-manager --enable remi-${PHP_PACKAGE}
 
