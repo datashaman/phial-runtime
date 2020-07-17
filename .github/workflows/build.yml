@@ -6,7 +6,6 @@ on:
 
 jobs:
   build-php72-base:
-    name: php7.2 base build image
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -22,7 +21,6 @@ jobs:
           target: base
 
   build-php72:
-    name: php7.2 build image
     needs: build-php72-base
     runs-on: ubuntu-latest
     steps:
@@ -53,7 +51,6 @@ jobs:
           tags: build-php7.3
 
   build-php74:
-    name: php7.4 build image
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -68,7 +65,6 @@ jobs:
           tags: build-php7.4
 
   build-php80:
-    name: php8.0 build image
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
