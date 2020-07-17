@@ -50,7 +50,6 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
           build_args: PHP_PACKAGE=php73
           tags: build-php72
-          tags: build-php73
 
   build-php74:
     needs: build-base
