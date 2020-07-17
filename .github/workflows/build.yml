@@ -11,7 +11,7 @@ jobs:
     container:
       image: amazonlinux:2
     steps:
-      - name: yum dependencies
+      - name: Install php and system dependencies
         run: |
           yum update -y
           amazon-linux-extras install -y epel
@@ -31,3 +31,15 @@ jobs:
           ln -s /usr/bin/php74 /usr/bin/php
           yum clean all
           rm -rf /var/cache/yum
+      - name: Install tools
+        run: |
+          pip3 install -U \
+            aws-lambda-builders==0.9.0 \
+            aws-sam-cli==0.53.0 \
+            awscli boto3 \
+            --no-cache-dir
+      - name: Install composer
+        run: |
+          curl https://raw.githubusercontent.com/composer/getcomposer.org/master/web/installer \
+            | php -- --quiet --install-dir=/usr/local/bin --filename=composer
+          composer global require hirak/prestissimo
