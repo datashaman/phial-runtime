@@ -9,7 +9,8 @@ jobs:
     name: php74
     runs-on: amazonlinux:2
     steps:
-      - name: |
+      - name: yum dependencies
+        run: |
           yum update -y
           amazon-linux-extras install -y epel \
           yum install -y \
