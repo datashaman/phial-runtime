@@ -1,7 +1,7 @@
-TAG = builder
+IMAGE = datashaman/phial-runtime
 
-build:
-	docker build -t $(TAG) .
+build-php74:
+	docker build --build-arg PHP_PACKAGE=php74 -t $(IMAGE):build-php-7.4 .
 
-run:
-	docker run -it --rm -v $(HOME)/.aws:/root/.aws $(TAG) bash
+run-php74:
+	docker run -it --rm -v $(HOME)/.aws:/root/.aws $(IMAGE):build-php-7.4 bash
