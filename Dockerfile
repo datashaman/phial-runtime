@@ -31,4 +31,5 @@ RUN pip3 install -U aws-lambda-builders==0.9.0 aws-sam-cli==0.53.0 awscli boto3 
 
 RUN curl https://raw.githubusercontent.com/composer/getcomposer.org/master/web/installer \
     | php -- --quiet --install-dir=/usr/local/bin --filename=composer \
-    && composer global require --no-cache hirak/prestissimo
+    && composer global require hirak/prestissimo \
+    && composer clear-cache
