@@ -5,20 +5,22 @@ on:
       - .github/workflows/php.yml
       - php/**
 
-strategy:
-  matrix:
-    php:
-      - php72
-      - php73
-      - php74
-      - php80
-
 jobs:
   build-php:
     runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        php:
+          - php72
+          - php73
+          - php74
+          - php80
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
+
       - name: Build and push docker image
         uses: docker/build-push-action@v1
         with:
