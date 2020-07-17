@@ -13,6 +13,7 @@ jobs:
       - name: Build and push docker image
         uses: docker/build-push-action@v1
         with:
+          dockerfile: base/Dockerfile
           repository: datashaman/phial-runtime
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
@@ -28,7 +29,7 @@ jobs:
       - name: Build and push docker image
         uses: docker/build-push-action@v1
         with:
-          cache_froms: datashaman/phial-runtime:build-base
+          dockerfile: base/Dockerfile
           repository: datashaman/phial-runtime
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
@@ -44,7 +45,7 @@ jobs:
       - name: Build and push docker image
         uses: docker/build-push-action@v1
         with:
-          cache_froms: datashaman/phial-runtime:build-base
+          dockerfile: base/Dockerfile
           repository: datashaman/phial-runtime
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
@@ -60,7 +61,7 @@ jobs:
       - name: Build and push docker image
         uses: docker/build-push-action@v1
         with:
-          cache_froms: datashaman/phial-runtime:build-base
+          dockerfile: base/Dockerfile
           repository: datashaman/phial-runtime
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
@@ -76,7 +77,7 @@ jobs:
       - name: Build and push docker image
         uses: docker/build-push-action@v1
         with:
-          cache_froms: datashaman/phial-runtime:build-base
+          dockerfile: base/Dockerfile
           repository: datashaman/phial-runtime
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
