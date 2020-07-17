@@ -4,7 +4,9 @@ name: build-php
 on:
   push:
     paths:
-      - .github/workflows/php.yml
+      - .github/workflows/build-base.yml
+      - .github/workflows/build-php.yml
+      - build-base/**
       - build-php/**
 
 jobs:
