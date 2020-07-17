@@ -15,7 +15,6 @@ jobs:
         uses: docker/build-push-action@v1
         with:
           build_args: PHP_PACKAGE=php72
-          cache_froms: datashaman/phial-runtime:build-php7.2
           password: ${{ secrets.DOCKER_PASSWORD }}
           repository: datashaman/phial-runtime
           tags: build-php7.2
@@ -30,7 +29,6 @@ jobs:
         uses: docker/build-push-action@v1
         with:
           build_args: PHP_PACKAGE=php73
-          cache_froms: datashaman/phial-runtime:build-php7.3
           password: ${{ secrets.DOCKER_PASSWORD }}
           repository: datashaman/phial-runtime
           tags: build-php7.3
@@ -45,7 +43,6 @@ jobs:
         uses: docker/build-push-action@v1
         with:
           build_args: PHP_PACKAGE=php74
-          cache_froms: datashaman/phial-runtime:build-php7.4
           password: ${{ secrets.DOCKER_PASSWORD }}
           repository: datashaman/phial-runtime
           tags: build-php7.4
@@ -60,7 +57,6 @@ jobs:
         uses: docker/build-push-action@v1
         with:
           build_args: PHP_PACKAGE=php80
-          cache_froms: datashaman/phial-runtime:build-php8.0
           password: ${{ secrets.DOCKER_PASSWORD }}
           repository: datashaman/phial-runtime
           tags: build-php8.0
