@@ -16,7 +16,7 @@ jobs:
           repository: datashaman/phial-runtime
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
-          path: /github/workspace/base
+          path: ./base
           tags: build-base
 
   build-php72:
