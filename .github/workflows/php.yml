@@ -1,6 +1,4 @@
 ---
-name: php builders
-
 on:
   push:
     paths:
