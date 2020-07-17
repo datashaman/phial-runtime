@@ -2,7 +2,8 @@ FROM amazonlinux:2
 
 RUN rpm --import https://rpms.remirepo.net/RPM-GPG-KEY-remi
 
-RUN amazon-linux-extras install -y epel \
+RUN yum update -y \
+    && amazon-linux-extras install -y epel \
     && yum update -y \
     && yum install -y \
         deltarpm \
