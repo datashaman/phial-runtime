@@ -2,6 +2,7 @@
 on:
   push:
     paths:
+      - .github/workflows/php.yml
       - php/**
 
 strategy:

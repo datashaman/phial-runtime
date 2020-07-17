@@ -2,6 +2,7 @@
 on:
   push:
     paths:
+      - .github/workflows/base.yml
       - base/**
 
 jobs:
