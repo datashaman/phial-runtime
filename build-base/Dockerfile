@@ -9,6 +9,7 @@ RUN yum update -y \
         deltarpm \
         http://rpms.famillecollet.com/enterprise/remi-release-7.rpm \
         python3-pip \
+        tree \
         yum-utils \
     && yum clean all \
     && rm -rf /var/cache/yum
