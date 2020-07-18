@@ -78,3 +78,4 @@ ENV PHP_INI_DIR="/opt/${PHP_PACKAGE}/etc/php.ini"
 ENV PHP_INI_SCAN_DIR="/opt/${PHP_PACKAGE}/etc/php.d"
 
 COPY --from=base /opt/${PHP_PACKAGE} /opt/${PHP_PACKAGE}
+COPY bootstrap /opt
