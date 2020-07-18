@@ -18,8 +18,7 @@ RUN yum update -y \
 
 RUN curl https://raw.githubusercontent.com/composer/getcomposer.org/master/web/installer \
     | php -- --quiet --install-dir=/usr/local/bin --filename=composer \
-    && composer global require hirak/prestissimo \
-    && composer clear-cache
+    && composer global require --no-cache hirak/prestissimo
 
 RUN mkdir -p /opt/${PHP_PACKAGE}/etc \
     && cp -a \
@@ -72,6 +71,7 @@ RUN echo "extension_dir=/opt/${PHP_PACKAGE}/lib/php/modules" > /opt/${PHP_PACKAG
 FROM datashaman/phial-runtime:build-base
 
 ARG PHP_PACKAGE
+ENV COMPOSER_CACHE_DIR=/tmp/composer
 ENV LD_LIBRARY_PATH="/opt/${PHP_PACKAGE}/lib:$LD_LIBRARY_PATH"
 ENV PATH="/opt/${PHP_PACKAGE}/bin:$PATH"
 ENV PHP_INI_DIR="/opt/${PHP_PACKAGE}/etc/php.ini"

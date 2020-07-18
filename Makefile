@@ -1,5 +1,7 @@
 IMAGE = datashaman/phial-runtime
 
+build: build-base build-php74
+
 .PHONY: build-base
 build-base:
 	docker build -t $(IMAGE):build-base build-base
