@@ -18,7 +18,8 @@ RUN yum update -y \
 
 RUN curl https://raw.githubusercontent.com/composer/getcomposer.org/master/web/installer \
     | php -- --quiet --install-dir=/usr/local/bin --filename=composer \
-    && composer global require --no-cache hirak/prestissimo
+    && composer global require hirak/prestissimo \
+    && composer clear-cache
 
 RUN mkdir -p /opt/${PHP_PACKAGE}/etc \
     && cp -a \
