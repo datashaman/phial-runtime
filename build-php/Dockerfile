@@ -80,4 +80,4 @@ ENV PHP_INI_SCAN_DIR="/opt/${PHP_PACKAGE}/etc/php.d"
 
 COPY --from=base /opt/${PHP_PACKAGE} /opt/${PHP_PACKAGE}
 COPY bootstrap /opt
-RUN sed -i "s#/$${PHP_PACKAGE}#${PHP_PACKAGE}#" /opt/bootstrap
+RUN sed -i 's#/\${PHP_PACKAGE}#${PHP_PACKAGE}#g' /opt/bootstrap
