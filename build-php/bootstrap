@@ -7,4 +7,4 @@ LD_LIBRARY_PATH="/opt/php74/lib:$LD_LIBRARY_PATH"
 PATH="/opt/php74/bin:$PATH"
 PHP_INI_SCAN_DIR="/opt/php74/etc/php.d"
 
-exec composer run bootstrap
+composer run bootstrap
