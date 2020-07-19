@@ -3,9 +3,9 @@
 set -euo allexport pipefail
 
 HOME="/tmp"
-LD_LIBRARY_PATH="/opt/${PHP_PACKAGE}/lib:$LD_LIBRARY_PATH"
-PATH="/opt/${PHP_PACKAGE}/bin:$PATH"
-PHP_INI_SCAN_DIR="/opt/${PHP_PACKAGE}/etc/php.d"
-PHP_PACKAGE="${PHP_PACKAGE}"
+LD_LIBRARY_PATH="/opt/{{PHP_PACKAGE}}/lib:$LD_LIBRARY_PATH"
+PATH="/opt/{{PHP_PACKAGE}}/bin:$PATH"
+PHP_INI_SCAN_DIR="/opt/{{PHP_PACKAGE}}/etc/php.d"
+PHP_PACKAGE="{{PHP_PACKAGE}}"
 
 composer run bootstrap

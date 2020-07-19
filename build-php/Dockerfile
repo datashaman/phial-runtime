@@ -9,6 +9,7 @@ RUN yum update -y \
         ${PHP_PACKAGE} \
         ${PHP_PACKAGE}-php-gd \
         ${PHP_PACKAGE}-php-mbstring \
+        ${PHP_PACKAGE}-php-mysqlnd \
         ${PHP_PACKAGE}-php-process \
         ${PHP_PACKAGE}-php-xml \
         unzip \
@@ -66,12 +67,13 @@ RUN mkdir /opt/${PHP_PACKAGE}/lib/php \
         ${PHP_PACKAGE_ROOT}/usr/lib64/php/modules \
         /opt/${PHP_PACKAGE}/lib/php
 
-RUN sed -i "s#/etc/opt/remi/${PHP_PACKAGE}#/opt/${PHP_PACKAGE}/etc#" /opt/${PHP_PACKAGE}/etc/php.ini
-RUN echo "extension_dir=/opt/${PHP_PACKAGE}/lib/php/modules" > /opt/${PHP_PACKAGE}/etc/php.d/phial.ini
+RUN sed -i "s#/etc/opt/remi/${PHP_PACKAGE}#/opt/${PHP_PACKAGE}/etc#" "/opt/${PHP_PACKAGE}/etc/php.ini"
+# RUN echo "extension_dir=/opt/${PHP_PACKAGE}/lib/php/modules" > /opt/${PHP_PACKAGE}/etc/php.d/phial.ini
 
 FROM datashaman/phial-runtime:build-base
 
 ARG PHP_PACKAGE
+
 ENV COMPOSER_CACHE_DIR=/tmp/composer
 ENV LD_LIBRARY_PATH="/opt/${PHP_PACKAGE}/lib:$LD_LIBRARY_PATH"
 ENV PATH="/opt/${PHP_PACKAGE}/bin:$PATH"
@@ -79,5 +81,6 @@ ENV PHP_INI_DIR="/opt/${PHP_PACKAGE}/etc/php.ini"
 ENV PHP_INI_SCAN_DIR="/opt/${PHP_PACKAGE}/etc/php.d"
 
 COPY --from=base /opt/${PHP_PACKAGE} /opt/${PHP_PACKAGE}
+
 COPY bootstrap /opt
-RUN sed -i 's#/\${PHP_PACKAGE}#${PHP_PACKAGE}#g' /opt/bootstrap
+RUN sed -i "s#{{PHP_PACKAGE}}#${PHP_PACKAGE}#g" /opt/bootstrap
