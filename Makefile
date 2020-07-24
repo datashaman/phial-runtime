@@ -1,4 +1,5 @@
 IMAGE = datashaman/phial-runtime
+PHP_PACKAGE = php74
 
 build: build-base build-php74
 
@@ -6,8 +7,8 @@ build: build-base build-php74
 build-base:
 	DOCKER_BUILDKIT=1 docker build -t $(IMAGE):build-base build-base
 
-build-php74:
-	DOCKER_BUILDKIT=1 docker build --build-arg PHP_PACKAGE=php74 -t $(IMAGE):build-$(PHP_PACKAGE) build-php
+build-$(PHP_PACKAGE):
+	DOCKER_BUILDKIT=1 docker build --build-arg PHP_PACKAGE=$(PHP_PACKAGE) -t $(IMAGE):build-$(PHP_PACKAGE) build-php
 
-run-php74:
+run-$(PHP_PACKAGE):
 	docker run -it --rm -v $(HOME)/.aws:/root/.aws $(IMAGE):build-$(PHP_PACKAGE) bash
