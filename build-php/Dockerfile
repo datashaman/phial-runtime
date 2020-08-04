@@ -7,6 +7,7 @@ RUN yum-config-manager --enable remi-${PHP_PACKAGE}
 RUN yum update -y \
     && yum install -y \
         ${PHP_PACKAGE} \
+        ${PHP_PACKAGE}-php-apcu \
         ${PHP_PACKAGE}-php-gd \
         ${PHP_PACKAGE}-php-mbstring \
         ${PHP_PACKAGE}-php-mysqlnd \
