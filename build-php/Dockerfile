@@ -59,7 +59,7 @@ ARG PHP_PACKAGE_ROOT=/opt/remi/${PHP_PACKAGE}/root
 
 RUN mkdir /opt/${PHP_PACKAGE}/bin \
     && cp \
-        ${PHP_PACKAGE_ROOT}/bin/* \
+        ${PHP_PACKAGE_ROOT}/bin/php \
         /usr/local/bin/composer \
         /opt/${PHP_PACKAGE}/bin
 
