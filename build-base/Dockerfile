@@ -10,6 +10,7 @@ RUN yum update -y \
         git \
         http://rpms.famillecollet.com/enterprise/remi-release-7.rpm \
         python3-pip \
+        unzip \
         yum-utils \
     && yum clean all \
     && rm -rf /var/cache/yum
