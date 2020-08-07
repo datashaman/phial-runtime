@@ -7,6 +7,7 @@ RUN yum update -y \
     && yum update -y \
     && yum install -y \
         deltarpm \
+        git \
         http://rpms.famillecollet.com/enterprise/remi-release-7.rpm \
         python3-pip \
         yum-utils \
