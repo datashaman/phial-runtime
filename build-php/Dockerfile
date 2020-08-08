@@ -11,7 +11,6 @@ RUN yum update -y \
         ${PHP_PACKAGE}-php-gd \
         ${PHP_PACKAGE}-php-mbstring \
         ${PHP_PACKAGE}-php-mysqlnd \
-        ${PHP_PACKAGE}-php-opcache \
         ${PHP_PACKAGE}-php-process \
         ${PHP_PACKAGE}-php-xml \
         unzip \
@@ -77,12 +76,10 @@ FROM datashaman/phial-runtime:build-base
 ARG PHP_PACKAGE
 
 ENV COMPOSER_CACHE_DIR=/tmp/composer
-ENV HOME="/tmp"
 ENV LD_LIBRARY_PATH="/opt/${PHP_PACKAGE}/lib:$LD_LIBRARY_PATH"
 ENV PATH="/opt/${PHP_PACKAGE}/bin:$PATH"
 ENV PHP_INI_DIR="/opt/${PHP_PACKAGE}/etc/php.ini"
 ENV PHP_INI_SCAN_DIR="/opt/${PHP_PACKAGE}/etc/php.d"
-ENV PHP_PACKAGE="${PHP_PACKAGE}"
 
 COPY --from=base /opt/${PHP_PACKAGE} /opt/${PHP_PACKAGE}
 
