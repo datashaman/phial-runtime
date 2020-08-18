@@ -41,6 +41,7 @@ RUN mkdir /opt/${PHP_PACKAGE}/lib \
         /usr/lib64/libharfbuzz.so* \
         /usr/lib64/libjbig.so* \
         /usr/lib64/libjpeg.so* \
+        /usr/lib64/liblzf.so* \
         /usr/lib64/libncurses.so* \
         /usr/lib64/libonig.so* \
         /usr/lib64/libpcre.so* \
