@@ -15,6 +15,7 @@ RUN yum update -y \
         ${PHP_PACKAGE}-php-process \
         ${PHP_PACKAGE}-php-xml \
         liblzf \
+        libzstd \
         unzip \
     && ln -s /usr/bin/${PHP_PACKAGE} /usr/bin/php \
     && yum clean all \
@@ -56,6 +57,7 @@ RUN mkdir /opt/${PHP_PACKAGE}/lib \
         /usr/lib64/libxcb.so* \
         /usr/lib64/libXpm.so* \
         /usr/lib64/libxslt* \
+        /usr/lib64/libzstd.so* \
         /opt/${PHP_PACKAGE}/lib
 
 ARG PHP_PACKAGE_ROOT=/opt/remi/${PHP_PACKAGE}/root
