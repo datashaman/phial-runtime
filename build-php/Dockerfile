@@ -14,6 +14,7 @@ RUN yum update -y \
         ${PHP_PACKAGE}-php-pecl-redis \
         ${PHP_PACKAGE}-php-process \
         ${PHP_PACKAGE}-php-xml \
+        liblzf \
         unzip \
     && ln -s /usr/bin/${PHP_PACKAGE} /usr/bin/php \
     && yum clean all \
