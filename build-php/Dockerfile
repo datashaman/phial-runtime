@@ -13,6 +13,7 @@ RUN yum update -y \
         ${PHP_PACKAGE}-php-mysqlnd \
         ${PHP_PACKAGE}-php-process \
         ${PHP_PACKAGE}-php-xml \
+        php-pecl-redis \
         unzip \
     && ln -s /usr/bin/${PHP_PACKAGE} /usr/bin/php \
     && yum clean all \
@@ -57,9 +58,10 @@ RUN mkdir /opt/${PHP_PACKAGE}/lib \
 
 ARG PHP_PACKAGE_ROOT=/opt/remi/${PHP_PACKAGE}/root
 
+RUN ls -l ${PHP_PACKAGE_ROOT}/bin
+
 RUN mkdir /opt/${PHP_PACKAGE}/bin \
     && cp \
-        ${PHP_PACKAGE_ROOT}/bin/pecl \
         ${PHP_PACKAGE_ROOT}/bin/php \
         /usr/local/bin/composer \
         /opt/${PHP_PACKAGE}/bin
