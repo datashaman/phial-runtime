@@ -43,14 +43,15 @@ RUN mkdir /opt/${PHP_PACKAGE}/lib \
         /usr/lib64/libharfbuzz.so* \
         /usr/lib64/libjbig.so* \
         /usr/lib64/libjpeg.so* \
+        /usr/lib64/liblz4.so* \
         /usr/lib64/liblzf.so* \
         /usr/lib64/libncurses.so* \
         /usr/lib64/libonig.so* \
         /usr/lib64/libpcre.so* \
         /usr/lib64/libpng* \
         /usr/lib64/libraqm.so* \
-        /usr/lib64/libtinfo.so* \
         /usr/lib64/libtiff.so* \
+        /usr/lib64/libtinfo.so* \
         /usr/lib64/libwebp.so* \
         /usr/lib64/libX11.so* \
         /usr/lib64/libXau.so* \
@@ -76,7 +77,6 @@ RUN mkdir /opt/${PHP_PACKAGE}/lib/php \
         /opt/${PHP_PACKAGE}/lib/php
 
 RUN sed -i "s#/etc/opt/remi/${PHP_PACKAGE}#/opt/${PHP_PACKAGE}/etc#" "/opt/${PHP_PACKAGE}/etc/php.ini"
-# RUN echo "extension_dir=/opt/${PHP_PACKAGE}/lib/php/modules" > /opt/${PHP_PACKAGE}/etc/php.d/phial.ini
 
 FROM datashaman/phial-runtime:build-base
 
