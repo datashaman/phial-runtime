@@ -11,9 +11,9 @@ RUN yum update -y \
         ${PHP_PACKAGE}-php-gd \
         ${PHP_PACKAGE}-php-mbstring \
         ${PHP_PACKAGE}-php-mysqlnd \
+        ${PHP_PACKAGE}-php-pecl-redis \
         ${PHP_PACKAGE}-php-process \
         ${PHP_PACKAGE}-php-xml \
-        php-pecl-redis \
         unzip \
     && ln -s /usr/bin/${PHP_PACKAGE} /usr/bin/php \
     && yum clean all \
